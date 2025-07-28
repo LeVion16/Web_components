@@ -1,0 +1,50 @@
+/* A szülő <div> stílusa – ez foglalja körbe az inputot és a labelt */
+div {
+    position: relative;             /* Szükséges ahhoz, hogy a benne lévő label absolute pozíciója ehhez képest értelmeződjön */
+    width: 90%;                     /* A div szélessége a képernyő 90%-a – ezáltal mobilbarát lesz */
+    max-width: 300px;               /* Soha ne legyen szélesebb 300px-nél – ez jól néz ki nagyobb képernyőn is */
+    margin: 40px auto;              /* 40px felső és alsó margó, valamint auto jobb-balra = középre igazítás */
+}
+
+/* Az input mező stílusa */
+input {
+    width: 100%;                    /* Teljes szélesség a szülő diven belül */
+    padding: 1em;                   /* Belső tér: kényelmes távolság a szöveg és a szegély között */
+    font-size: 1rem;                /* Alap betűméret (1rem = 16px a legtöbb böngészőn) */
+    border: 2px solid #ccc;         /* Alapértelmezett szegély: világosszürke és 2px vastag */
+    border-radius: 4px;             /* Lekerekített sarkok – modernebb megjelenés */
+    outline: none;                  /* Ne jelenjen meg kék "keret" fókuszkor – helyette a border színe változik */
+    box-sizing: border-box;         /* Fontos: a padding ne növelje meg a tényleges szélességet */
+    transition: border-color 0.3s ease; /* Szép, sima animáció fókuszkor, amikor a szegélyszín változik */
+}
+
+/* A lebegő címke (label) stílusa */
+label {
+    position: absolute;             /* Közvetlen pozicionálás a szülő diven belül */
+    left: 1em;                      /* Balról 1em-re van eltolva (ugyanannyi, mint az input padding-je – esztétikus) */
+    top: 1em;                       /* Fentről 1em-re van – pont az input szövegmezőjére esik */
+    background: #fff;               /* Fehér háttér, hogy ne takarja el az input szegélyét */
+    padding: 0 0.3em;               /* Kis belső tér a label szövege körül – jól néz ki, amikor "lebeg" */
+    color: #888;                    /* Alapértelmezett szürke szín */
+    transition:                    /* Animáció a lebegéshez */
+        transform 0.3s ease,       /* A méret vagy eltolás változása */
+        color 0.3s ease,           /* A színváltozás */
+        top 0.3s ease,             /* A pozíció felfelé mozdul */
+        font-size 0.3s ease;       /* A betűméret csökken */
+    pointer-events: none;          /* A label ne legyen kattintható – az input veszi át a fókuszt */
+    font-size: 1rem;               /* Alap méret – megegyezik az input szövegméretével */
+}
+
+/* Amikor az input fókuszba kerül (pl. rákattintunk vagy beleírunk) */
+input:focus {
+    border-color: #0051ff;         /* A szegély színe kékre vált */
+}
+
+/* Amikor az input fókuszban van, vagy már be van írva szöveg */
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    transform: translateY(-.9em);  /* Kicsit feljebb csúszik (lebeg) */
+    top: 0.5em;                    /* Fönti pozíció csökken, hogy vizuálisan távolodjon az input szövegtől */
+    font-size: 0.8rem;             /* A label kicsinyedik, jelezve, hogy már nem elsődleges */
+    color: #0051ff;                /* A label is kékre vált – illeszkedik a fókusz színéhez */
+}

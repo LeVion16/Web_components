@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div>
+    <!-- 
+        Az input mező, ahová a felhasználó ír. 
+        - type="text": szöveges beviteli mező
+        - id="nev": azonosító, amit a label-hez kapcsolunk
+        - placeholder=" ": üres szóköz – fontos trükk, hogy működjön a :placeholder-shown szelektor
+    -->
+    <input type="text" id="name" placeholder=" " />
+
+    <!-- 
+        A lebegő címke (label), ami az input mezőre mutat.
+        - for="nev": ez kapcsolja össze az input id-jével, így ha rákattintasz a labelre, az input aktiválódik
+        - A tartalma: "Search..." – ez jelenik meg lebegő címkeként (nem a placeholder!)
+    -->
+    <label for="name">Search...</label>
+</div>
+</body>
+</html>
